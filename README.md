@@ -1,2 +1,4 @@
 # Observium-Agent-Manager
- Manage snmp config for observium
+ Install snmp agent for observium
+ 
+ In future (Manage snmp config for observium)
