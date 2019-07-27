@@ -1,4 +1,4 @@
-# -*-coding:UTF-8 -*
+# -*- coding: utf-8 -*-
 ###
 # This script is under development for manage snmp client config
 # By MsterHuj
@@ -9,6 +9,7 @@
 
 import os
 import distro
+from switch import Switch
 
 # var stock
 
@@ -81,6 +82,8 @@ print("2. Manage agent script")
 print("3. Remove Agent")
 print("9. Quit")
 input_choice = input("# ")
+
+
 
 print("")
 print("This script is not finished yet I am still working on it")
