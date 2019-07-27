@@ -9,7 +9,6 @@
 
 import os
 import distro
-from switch import Switch
 
 # var stock
 
@@ -83,7 +82,7 @@ print("3. Remove Agent")
 print("9. Quit")
 input_choice = input("# ")
 
-
+# TODO MAKE "SWITCH" HERE
 
 print("")
 print("This script is not finished yet I am still working on it")
