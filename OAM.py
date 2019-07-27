@@ -37,16 +37,11 @@ def user_root():
         return False
 
 
-def dist_supported():  # TODO BUG !!! this function dont work... i go sleep I'm tired. ZZZZZZZZZZZZZZzzzzzzzzzzzz
-    if dist_name in dist_supported_list:
-        return True
-    else:
-        return False
-    #dist_check_status = False
-    #for dist_check in dist_supported_list:
-    #    if dist_check in dist_name:
-    #        dist_check_status = True
-    #return dist_check_status
+def dist_supported():
+    for dist_check in dist_supported_list:
+        if dist_check in dist_name.lower():
+            return True
+    return False
 
 
 def end_program():
@@ -77,5 +72,4 @@ else:
                 "Create a issue on the project so that in a future version you will get your distribution")
     end_program()
 
-print("This script is not finish please dont use it !")
 end_program()
