@@ -28,8 +28,6 @@ dist_codename = distro.codename()
 
 dist_supported_list = ["debian", "ubuntu", "kali"]
 
-cliStatus = True
-
 
 # def function
 def user_root(): # return bool / check user is root
@@ -77,9 +75,9 @@ def check_script_all_ok(): # return bool / check if script can be run
 
 
 def cli():
+    cliStatus = True
     while cliStatus:
-        print(GREEN + "[*] All right starting agent !")
-        print("")
+        print(GREEN + "")
         print("Observium Agent Manager")
         print("1. Intall UNIX-Agent (snmpd-config will be overwritten)")
         print("2. Manage agent script")
@@ -97,8 +95,8 @@ def cli():
             # run func remove agentAddress
             print(NOCOLOR + "run func remove agentAddress")
         elif input_choice == "9":
-            print("")
-            end_program()
+            print("Quitting...")
+            cliStatus = False
         else:
             print(RED + "Invalid Number !")
 
@@ -111,6 +109,7 @@ print("")
 
 # verification requirements for running this script
 if check_script_all_ok():
+    print(GREEN + "[*] All right starting agent !")
     cli()
 else:
     print("Error detected fix it to use me please :p")
