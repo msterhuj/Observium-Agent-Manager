@@ -8,9 +8,11 @@
 # THIS SCRIPT IS NOT FINISH PLEASE DONT USE IT !
 
 import os
+import shutil as flm
 import distro
 import wget
 import tarfile
+import function.checker as checker
 
 # var stock
 
@@ -19,7 +21,13 @@ GREEN = '\033[0;32m'
 YELLOW = '\033[1;33m'
 NOCOLOR = '\033[0m'
 
-banner = "[*] Observium Agent Manager Python script"
+banner = "\n" \
+         " _____ _                   _              _____             _      _____                         \n" \
+         "|     | |_ ___ ___ ___ _ _|_|_ _ _____   |  _  |___ ___ ___| |_   |     |___ ___ ___ ___ ___ ___ \n" \
+         "|  |  | . |_ -| -_|  _| | | | | |     |  |     | . | -_|   |  _|  | | | | .'|   | .'| . | -_|  _|\n" \
+         "|_____|___|___|___|_|  \_/|_|___|_|_|_|  |__|__|_  |___|_|_|_|    |_|_|_|__,|_|_|__,|_  |___|_|  \n" \
+         "                                               |___|                                |___|        \n" \
+         "\n"
 beta_message = "[!] This is a beta version !\n" \
                "[!] If you have any bugs please create an issue on the Observium-Agent-Manager project\n" \
                "[!] https://github.com/msterhuj/Observium-Agent-Manager\n" \
@@ -32,49 +40,12 @@ dist_codename = distro.codename()
 dist_supported_list = ["debian", "ubuntu", "kali"]
 
 
-# def function
-def user_root():  # return bool / check user is root
-    if os.getuid() == 0:
-        return True
-    else:
-        return False
-
-
-def dist_supported():  # return bool / check system allow to use script
-    for dist_check in dist_supported_list:
-        if dist_check in dist_name.lower():
-            return True
-    return False
-
-
 def end_program():  # return null / stop the programme and remove color on cli
     print("")
     print(GREEN + "End of programme Thank you for using me.")
     print(RED + beta_message)
     print(NOCOLOR)
     exit(0)
-
-
-def check_script_all_ok():  # return bool / check if script can be run
-    error = False
-    if user_root():
-        print(GREEN + "[*] Root user : OK")
-    else:
-        print(RED + "[!] Please run this script as root")
-        error = True
-
-    if dist_supported():
-        print(GREEN + "[*] Distribution Support : OK")
-        print(GREEN + "[*] " + dist_name + ", " + dist_ver + ", " + dist_codename)
-    else:
-        print(RED + "[!] Your's Distribution is not supported by this script\n"
-                    "[!] Create a issue on the project so that in a future version you will get your distribution")
-        error = True
-
-    if error:
-        return False
-    else:
-        return True
 
 
 def pkg_apt():
@@ -84,16 +55,33 @@ def pkg_apt():
 
 def install_agent_observium_ce():
     print("Downloading Observium CE...")
-    wget.download("http://www.observium.org/observium-community-latest.tar.gz", "/opt/observium-community-latest.tar.gz")
+    wget.download("http://www.observium.org/observium-community-latest.tar.gz",
+                  "/opt/observium-community-latest.tar.gz")  # TODO Make a check if need to redownload the file
     print("\nExtract tar file...")
     file = tarfile.open("/opt/observium-community-latest.tar.gz")
-    file.extractall("/opt/observium/")
+    file.extractall("/opt/")
     print("Install agent dependence")
     if pkg_apt():
         print(GREEN + "Update apt source" + YELLOW)
         os.system("apt-get update")
         print(GREEN + "Install dependence" + YELLOW)
         os.system("apt-get -qq install -y xinetd snmpd libwww-perl")
+        print(GREEN + "")
+        flm.copy("/opt/observium/scripts/observium_agent_xinetd", "/etc/xinetd.d/observium_agent_xinetd")
+        os.system("service xinetd restart")
+        flm.copy("/opt/observium/scripts/observium_agent", "/usr/bin/observium_agent")
+        os.mkdir("/usr/lib/observium_agent")
+        os.mkdir("/usr/lib/observium_agent/scripts-available")
+        os.mkdir("/usr/lib/observium_agent/scripts-enabled")
+        # flm.copy("/opt/observium/scripts/agent-local/*", "/usr/lib/observium_agent/scripts-available")
+        # os.system("chmod +x /usr/bin/observium_agent")
+        # os.system("ln -sf /usr/lib/observium_agent/scripts-available/dmi /usr/lib/observium_agent/scripts-enabled")
+        flm.copy("/opt/observium/scripts/distro", "/usr/bin/distro")
+        os.system("chmod +x /usr/bin/distro")
+        print("FIN DE LA BASE DU TEST")
+        end_program()
+    else:
+        print(RED + "Intern script error report this to repo github" + GREEN)
 
 
 def cli():
@@ -138,23 +126,28 @@ def cli():
 
 ##########################################################################
 # Start point of python script
-print("")
-print("")
-print(GREEN + banner)
-print("")
-print("")
-
-# verification requirements for running this script
-if check_script_all_ok():
-    print(GREEN + "[*] All right starting agent !")
-    cli()
-else:
+def main():
     print("")
-    print(RED + "Error detected fix it to use me please :p")
+    print("")
+    print(GREEN + banner)
+    print("")
     print("")
 
-print("")
-print(GREEN + "This script is not finished yet I am still working on it")
-print("")
+    # verification requirements for running this script
+    if checker.isScriptReady(dist_supported_list, dist_name, dist_ver, dist_codename):
+        print(GREEN + "[*] All right starting agent !")
+        cli()
+    else:
+        print("")
+        print(RED + "[!] Error detected fix it to use me please :p")
+        print("")
 
-end_program()
+    print("")
+    print(GREEN + "[!] This script is not finished yet I am still working on it [!]")
+    print("")
+
+    end_program()
+
+
+if __name__ == '__main__':
+    main()
