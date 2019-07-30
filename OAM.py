@@ -48,42 +48,6 @@ def end_program():  # return null / stop the programme and remove color on cli
     exit(0)
 
 
-def pkg_apt():
-    if "debian" or "ubuntu" in dist_supported_list:  # TODO update the checker by list an mane detect
-        return True
-
-
-def install_agent_observium_ce():
-    print("Downloading Observium CE...")
-    wget.download("http://www.observium.org/observium-community-latest.tar.gz",
-                  "/opt/observium-community-latest.tar.gz")  # TODO Make a check if need to redownload the file
-    print("\nExtract tar file...")
-    file = tarfile.open("/opt/observium-community-latest.tar.gz")
-    file.extractall("/opt/")
-    print("Install agent dependence")
-    if pkg_apt():
-        print(GREEN + "Update apt source" + YELLOW)
-        os.system("apt-get update")
-        print(GREEN + "Install dependence" + YELLOW)
-        os.system("apt-get -qq install -y xinetd snmpd libwww-perl")
-        print(GREEN + "")
-        flm.copy("/opt/observium/scripts/observium_agent_xinetd", "/etc/xinetd.d/observium_agent_xinetd")
-        os.system("service xinetd restart")
-        flm.copy("/opt/observium/scripts/observium_agent", "/usr/bin/observium_agent")
-        os.mkdir("/usr/lib/observium_agent")
-        os.mkdir("/usr/lib/observium_agent/scripts-available")
-        os.mkdir("/usr/lib/observium_agent/scripts-enabled")
-        # flm.copy("/opt/observium/scripts/agent-local/*", "/usr/lib/observium_agent/scripts-available")
-        # os.system("chmod +x /usr/bin/observium_agent")
-        # os.system("ln -sf /usr/lib/observium_agent/scripts-available/dmi /usr/lib/observium_agent/scripts-enabled")
-        flm.copy("/opt/observium/scripts/distro", "/usr/bin/distro")
-        os.system("chmod +x /usr/bin/distro")
-        print("FIN DE LA BASE DU TEST")
-        end_program()
-    else:
-        print(RED + "Intern script error report this to repo github" + GREEN)
-
-
 def cli():
     cliStatus = True
     while cliStatus:
@@ -98,8 +62,9 @@ def cli():
 
         if input_choice == "1":
             # run func install agent
-            install_agent_observium_ce()
-
+            # install_agent_observium_ce()
+            print("Disabled Func")
+            
         elif input_choice == "2":
             # run func agent Manager
             print(NOCOLOR + "run func agent Manager")
