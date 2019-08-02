@@ -17,11 +17,6 @@ import function.Colors as color
 
 # var stock
 
-RED = '\033[0;31m'
-GREEN = '\033[0;32m'
-YELLOW = '\033[1;33m'
-NOCOLOR = '\033[0m'
-
 banner = "\n" \
          " _____ _                   _              _____             _      _____                         \n" \
          "|     | |_ ___ ___ ___ _ _|_|_ _ _____   |  _  |___ ___ ___| |_   |     |___ ___ ___ ___ ___ ___ \n" \
@@ -43,16 +38,16 @@ dist_supported_list = ["debian", "ubuntu", "kali"]
 
 def end_program():  # return null / stop the programme and remove color on cli
     print("")
-    print(GREEN + "End of programme Thank you for using me.")
-    print(RED + beta_message)
-    print(NOCOLOR)
+    print(color.green() + "End of programme Thank you for using me.")
+    print(color.red() + beta_message)
+    print(color.reset())
     exit(0)
 
 
 def cli():
     cliStatus = True
     while cliStatus:
-        print(GREEN + "")
+        print(color.green() + "")
         print("Observium Agent Manager")
         print("1. Install UNIX-Agent (snmpd-config will be overwritten)")
         print("2. Manage agent script")
@@ -68,11 +63,11 @@ def cli():
 
         elif input_choice == "2":
             # run func agent Manager
-            print(NOCOLOR + "run func agent Manager")
+            print(color.reset() + "run func agent Manager")
 
         elif input_choice == "3":
             # run func remove agent Manager
-            print(NOCOLOR + "run func remove agentAddress")
+            print(color.reset() + "run func remove agentAddress")
 
         elif input_choice == "4":
             print("In future")
@@ -82,7 +77,7 @@ def cli():
             cliStatus = False
 
         else:
-            print(RED + "Invalid Number !")
+            print(color.red() + "Invalid Number !")
 
 
 ##########################################################################
@@ -96,15 +91,15 @@ def main():
 
     # verification requirements for running this script
     if checker.isScriptReady(dist_supported_list, dist_name, dist_ver, dist_codename):
-        print(GREEN + "[*] All right starting agent !")
+        print(color.green() + "[*] All right starting agent !")
         cli()
     else:
         print("")
-        print(RED + "[!] Error detected fix it to use me please :p")
+        print(color.red() + "[!] Error detected fix it to use me please :p")
         print("")
 
     print("")
-    print(GREEN + "[!] This script is not finished yet I am still working on it [!]")
+    print(color.green() + "[!] This script is not finished yet I am still working on it [!]")
     print("")
 
     end_program()
