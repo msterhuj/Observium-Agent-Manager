@@ -1,3 +1,4 @@
 .idea/*
 venv/*
 function/__pycache__/*
+test.py
