@@ -1,5 +1,9 @@
 .idea/*
 venv/*
+<<<<<<< HEAD
 function/__pycache__/*
 function/__pycache__
 test.py
+=======
+function/__pycache__/*
+>>>>>>> parent of d5b7580... Create Class for color and update requiment

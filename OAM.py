@@ -13,7 +13,6 @@ import distro
 import wget
 import tarfile
 import function.checker as checker
-import function.Colors as color
 
 # var stock
 
@@ -60,7 +59,7 @@ def cli():
             # run func install agent
             # install_agent_observium_ce()
             print("Disabled Func")
-
+            
         elif input_choice == "2":
             # run func agent Manager
             print(color.reset() + "run func agent Manager")
@@ -70,7 +69,12 @@ def cli():
             print(color.reset() + "run func remove agentAddress")
 
         elif input_choice == "4":
-            print("In future")
+            print("Removing temp file")
+            try:
+                os.remove("/opt/observium-community-latest.tar.gz")
+                print("Removed")
+            except OSError as exep:
+                print(RED + "Error : file not fond or other error" + GREEN)
 
         elif input_choice == "9":
             print("Quitting...")
@@ -85,7 +89,7 @@ def cli():
 def main():
     print("")
     print("")
-    print(color.green() + banner)
+    print(GREEN + banner)
     print("")
     print("")
 
