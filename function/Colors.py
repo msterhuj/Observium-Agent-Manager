@@ -1,9 +1,5 @@
-class Colors(object):
-
-    def __init__(self, arg):
-        super(Colors, self).__init__()
-        self.arg = arg
-
+class Colors():
+    
 
     def red():
         return '\033[0;31m'

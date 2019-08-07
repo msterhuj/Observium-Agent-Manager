@@ -1,7 +1,4 @@
-class FileManager(object):
-    """docstring for FileManager."""
+class FileManager():
 
     def __init__(self, arg):
-        super(FileManager, self).__init__()
-        self.arg = arg
-        
+        print("FileManager Initialized !")
