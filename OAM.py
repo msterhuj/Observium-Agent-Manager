@@ -1,8 +1,10 @@
 from setting import setting as parameter
+from function.colors import colors
 
 def main():
     setting = parameter()
-    print(setting.bypass_root_check)
+    color = colors()
+    print(color.green + setting.banner)
     pass
 
 if __name__ == '__main__':

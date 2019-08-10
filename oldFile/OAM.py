@@ -15,27 +15,6 @@ import tarfile
 from function.Checker import Checker as check
 from function.Colors import Colors as color
 
-# var stock
-
-banner = "\n" \
-         " _____ _                   _              _____             _      _____                         \n" \
-         "|     | |_ ___ ___ ___ _ _|_|_ _ _____   |  _  |___ ___ ___| |_   |     |___ ___ ___ ___ ___ ___ \n" \
-         "|  |  | . |_ -| -_|  _| | | | | |     |  |     | . | -_|   |  _|  | | | | .'|   | .'| . | -_|  _|\n" \
-         "|_____|___|___|___|_|  \_/|_|___|_|_|_|  |__|__|_  |___|_|_|_|    |_|_|_|__,|_|_|__,|_  |___|_|  \n" \
-         "                                               |___|                                |___|        \n" \
-         "\n"
-beta_message = "[!] This is a beta version !\n" \
-               "[!] If you have any bugs please create an issue on the Observium-Agent-Manager project\n" \
-               "[!] https://github.com/msterhuj/Observium-Agent-Manager\n" \
-               "[!] Thank"
-
-dist_name = distro.name()
-dist_ver = distro.version()
-dist_codename = distro.codename()
-
-dist_supported_list = ["debian", "ubuntu", "kali"]
-
-
 def end_program():  # return null / stop the programme and remove color on cli
     print("")
     print(color.green() + "End of programme Thank you for using me.")
