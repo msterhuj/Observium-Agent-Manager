@@ -7,9 +7,12 @@ class setting():
     """
 
     def __init__(self):
-        # you can change this settings
+        ################################
+        # you can change this settings #
         self.bypass_root_check = False
-        # System value please dont edit
+        #################################
+        # System value please dont edit #
+        #################################
         self.banner = "\n" \
                  " _____ _                   _              _____             _      _____                         \n" \
                  "|     | |_ ___ ___ ___ _ _|_|_ _ _____   |  _  |___ ___ ___| |_   |     |___ ___ ___ ___ ___ ___ \n" \

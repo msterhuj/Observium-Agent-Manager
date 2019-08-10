@@ -1,3 +1,5 @@
 .idea/*
 venv/*
 test.py
+.__pycache__/*
+__pycache__/setting.cpython-37.pyc

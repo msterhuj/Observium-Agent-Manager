@@ -1,8 +1,8 @@
-from setting import setting
+from setting import setting as parameter
 
 def main():
-    set = setting()
-    print(set.bypass_root_check)
+    setting = parameter()
+    print(setting.bypass_root_check)
     pass
 
 if __name__ == '__main__':
