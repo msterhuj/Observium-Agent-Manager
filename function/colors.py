@@ -1,7 +1,9 @@
 class colors(object):
+
     """
         All colors of script
     """
+
 
     def __init__(self):
         self.red = '\033[0;31m'
