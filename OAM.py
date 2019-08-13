@@ -1,14 +1,9 @@
-from setting import setting as setting_import
-from function.core import core as core_import
-from function.colors import colors
+import setting
+import function.colors as color
+import function.core as core
 
 
 def main():
-    setting = setting_import()
-    color = colors()
-    core = core_import()
-
-    core.load_core()
     pass
 
 
