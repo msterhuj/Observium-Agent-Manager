@@ -1,5 +1,6 @@
 import os
 import distro
+import function.colors as color
 
 ################################
 # you can change this settings #
@@ -16,12 +17,12 @@ banner = "\n" \
          "\n"
 beta_message = "[!] This is a beta version !\n" \
                "[!] If you have any bugs please create an issue on the Observium-Agent-Manager project\n" \
-               "[!] https://github.com/msterhuj/Observium-Agent-Manager\n" \
+               "[!] "+color.underlined+"https://github.com/msterhuj/Observium-Agent-Manager"+color.reset_underlined+"\n" \
                "[!] Thank"
 
 #################################
 # System value please dont edit #
 dist_name = distro.name()
 dist_ver = distro.version()
-codename = distro.codename()
+dist_codename = distro.codename()
 dist_supported_list = ["debian", "ubuntu", "kali"]
