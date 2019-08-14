@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import distro
 import function.colors as color
@@ -5,7 +6,9 @@ import function.colors as color
 ################################
 # you can change this settings #
 bypass_root_check = False
-
+bypass_security_question = False
+debug = False
+tmp_dir = "/opt/observium"
 ######################
 # Script Message Var #
 banner = "\n" \
@@ -26,3 +29,6 @@ dist_name = distro.name()
 dist_ver = distro.version()
 dist_codename = distro.codename()
 dist_supported_list = ["debian", "ubuntu", "kali"]
+dist_pkg_apt = ["debian", "ubuntu", "kali"]
+dist_pkg_yum = ["centos"] # centos is not supported by OAM
+agent_install_dir = "/usr/bin/"

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import setting as setting
 import function.colors as color
@@ -43,10 +44,18 @@ def load():
     cli.run()
     pass
 
+def pkg_type() -> str:
+    if setting.dist_name in setting.dist_pkg_apt:
+        return "apt"
+    elif setting.dist_name in setting.dist_pkg_yum:
+        return "yum"
+    else:
+        return "dpkg"
+    pass
 
 def end_program():  # return null / stop the programme and remove color on cli
     print("")
     print(color.green + "End of programme Thank you for using me.")
     print(color.yellow + setting.beta_message)
     print(color.reset)
-    exit(0)
+    exit()

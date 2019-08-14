@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # based on https://misc.flogisoft.com/bash/tip_colors_and_formatting
 
 # Default color

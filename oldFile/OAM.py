@@ -15,14 +15,6 @@ import tarfile
 from function.Checker import Checker as check
 from function.Colors import Colors as color
 
-def end_program():  # return null / stop the programme and remove color on cli
-    print("")
-    print(color.green() + "End of programme Thank you for using me.")
-    print(color.red() + beta_message)
-    print(color.reset())
-    exit(0)
-
-
 def cli():
     cliStatus = True
     while cliStatus:
