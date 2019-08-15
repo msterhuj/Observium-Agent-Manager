@@ -67,6 +67,6 @@ bg_light_cyan = '\033[106m'
 
 bg_reset = '\033[49m'
 
-# reset
+# Reste
 reset = '\033[0m'
 reset_all = reset

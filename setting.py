@@ -9,7 +9,6 @@ bypass_root_check = False
 bypass_security_question = False
 debug = False
 tmp_dir = "/opt/observium"
-download_link = "http://www.observium.org/observium-community-latest.tar.gz"
 ######################
 # Script Message Var #
 banner = "\n" \

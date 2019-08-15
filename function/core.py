@@ -23,7 +23,7 @@ def load():
     print(color.green + "Checking is this System can use the script")
     can_start = True
     if is_root():
-        print(color.green + "[*] Root user : OK")
+         print(color.green + "[*] Root user : OK")
     else:
         print(color.red + "[!] Please run this script as root")
         can_start = False
@@ -36,14 +36,13 @@ def load():
                             "[!] Create a issue on the project so that in a future version you will get your distribution")
         can_start = False
 
-    if not can_start:
+    if can_start == False:
         print(color.red + "Unable to start the OAM please correct error above")
         end_program()
 
     print(color.green + "Start OAM !")
     cli.run()
     pass
-
 
 def pkg_type() -> str:
     if setting.dist_name in setting.dist_pkg_apt:
@@ -53,7 +52,6 @@ def pkg_type() -> str:
     else:
         return "dpkg"
     pass
-
 
 def end_program():  # return null / stop the programme and remove color on cli
     print("")
